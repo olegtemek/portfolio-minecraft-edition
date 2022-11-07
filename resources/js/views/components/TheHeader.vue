@@ -1,0 +1,49 @@
+<template>
+  <header class="header">
+    <div class="header__wrapper">
+      <h1><img src="@assets/main_logo.svg" alt="OLEGTEMEK" /></h1>
+      <p>My portfolio</p>
+      <span>Hello world!</span>
+    </div>
+  </header>
+</template>
+
+
+
+<script setup>
+</script>
+
+<style lang="scss" scoped>
+.header {
+  &__wrapper {
+    position: relative;
+    h1 {
+      img {
+        width: 100%;
+      }
+    }
+    p {
+      text-align: center;
+    }
+    span {
+      font-size: 24px;
+      position: absolute;
+      right: -70px;
+      top: 70%;
+      transform: translateY(-70%) rotate(-35deg);
+      color: $yellow;
+      text-shadow: 0px 3px 0px rgba(150, 153, 16, 0.4);
+      animation: anim $tr alternate-reverse infinite;
+
+      @keyframes anim {
+        0% {
+          transform: translateY(-70%) rotate(-35deg) scale(1);
+        }
+        100% {
+          transform: translateY(-70%) rotate(-35deg) scale(1.1);
+        }
+      }
+    }
+  }
+}
+</style>

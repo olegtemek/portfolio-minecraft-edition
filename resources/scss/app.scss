@@ -1,0 +1,16 @@
+@import '@style/_normalize.scss';
+@import '@style/_fonts.scss';
+
+
+
+body {
+  font-family: 'Minecraftia';
+  font-weight: $fw-regular;
+  color: $white;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}

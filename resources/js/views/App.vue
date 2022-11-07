@@ -1,0 +1,69 @@
+<template>
+  <div>
+    <button class="sound btn" @click="play">
+      <img :src="played ? sound_on : sound_off" alt="" />
+    </button>
+    <router-view :key="$route.path" />
+  </div>
+</template>
+
+
+
+<script setup>
+import sound_on from "@assets/sound-on.svg";
+import sound_off from "@assets/sound-off.svg";
+import sound_bg from "@assets/bg_sound.mp3";
+import { ref } from "@vue/reactivity";
+import { useStore } from "vuex";
+const store = useStore();
+
+const played = ref(false);
+const bg_audio = ref(null);
+const play = () => {
+  played.value = !played.value;
+
+  store.dispatch("clickSound");
+
+  if (bg_audio.value) {
+    bg_audio.value.pause();
+  }
+
+  if (played.value) {
+    bg_audio.value = new Audio(sound_bg);
+    bg_audio.value.play();
+    bg_audio.value.addEventListener("ended", function () {
+      this.currentTime = 0;
+      this.play();
+    });
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.sound {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: $gray;
+  color: $white;
+  margin-bottom: 34px;
+  text-shadow: 2px 2px 0 rgba($black, 0.8);
+  font-size: 16px;
+  border: 2px solid $black;
+  box-shadow: inset 3px 3px 0 rgba($white, 0.5),
+    inset -3px -3px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: $blue;
+  }
+}
+</style>

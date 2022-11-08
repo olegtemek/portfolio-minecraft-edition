@@ -54,6 +54,13 @@ button {
     inset -3px -3px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 820px) {
+    padding: 14px 0 4px 0;
+  }
 
   &:hover {
     background-color: $blue;

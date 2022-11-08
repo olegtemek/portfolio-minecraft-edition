@@ -18,8 +18,12 @@
   &__wrapper {
     position: relative;
     h1 {
+      text-align: center;
       img {
         width: 100%;
+        @media (max-width: 570px) {
+          width: 90%;
+        }
       }
     }
     p {
@@ -34,6 +38,16 @@
       color: $yellow;
       text-shadow: 0px 3px 0px rgba(150, 153, 16, 0.4);
       animation: anim $tr alternate-reverse infinite;
+
+      @media (max-width: 820px) {
+        font-size: 20px;
+      }
+      @media (max-width: 570px) {
+        right: -20px;
+      }
+      @media (max-width: 414px) {
+        font-size: 12px;
+      }
 
       @keyframes anim {
         0% {

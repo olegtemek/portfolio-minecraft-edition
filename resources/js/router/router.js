@@ -10,7 +10,12 @@ const routes = [
     path: '/projects',
     component: () => import('@/views/projects/Index.vue'),
     name: "projects.index"
-  }
+  },
+  {
+    path: '/stack',
+    component: () => import('@/views/stack/Index.vue'),
+    name: "stack.index"
+  },
 ]
 
 const router = createRouter({

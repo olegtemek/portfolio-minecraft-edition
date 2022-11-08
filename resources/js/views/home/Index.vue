@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="video">
-      <video autoplay muted loop>
+      <video autoplay muted loop @loadeddata="$emit('loading')">
         <source src="@assets/main.mp4" />
       </video>
     </div>

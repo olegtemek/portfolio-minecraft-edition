@@ -8,7 +8,7 @@
     <MyButton
       :title="'Stack'"
       :type="'router'"
-      :link="{ name: 'home.index' }"
+      :link="{ name: 'stack.index' }"
     />
 
     <MyButton
@@ -34,11 +34,6 @@
 
 
 <script setup>
-import { useStore } from "vuex";
-const store = useStore();
-const click = () => {
-  store.dispatch("clickSound");
-};
 </script>
 
 

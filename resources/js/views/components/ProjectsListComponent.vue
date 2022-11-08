@@ -1,0 +1,129 @@
+<template>
+  <div class="projects__list">
+    <a
+      :href="project.link"
+      target="_blank"
+      class="projects__item"
+      v-for="project of projects"
+      :key="project.id"
+    >
+      <div class="projects__item-img">
+        <img src="@assets/website.svg" alt="" />
+      </div>
+      <div class="projects__item-text">
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+      </div>
+    </a>
+  </div>
+</template>
+
+
+
+<script setup>
+import { computed, onMounted } from "@vue/runtime-core";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+onMounted(() => {
+  store.dispatch("fetchProjects");
+});
+
+const projects = computed(() => {
+  return store.getters.getProjects;
+});
+</script>
+
+<style lang="scss" scoped>
+.projects {
+  &__list {
+    margin-top: 110px;
+    width: 100%;
+    height: 460px;
+    overflow-y: scroll;
+    padding: 10px;
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba($white, 0.3);
+      background-color: $black;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: $black;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $white;
+      border: 2px solid $gray;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    height: 74px;
+    width: 100%;
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      .projects__item-img {
+        background-color: $blue;
+        &::after {
+          content: "";
+          background-image: url("@assets/search.svg");
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        img {
+          opacity: 0;
+        }
+      }
+    }
+
+    &-img {
+      padding: 10px;
+      background-color: $gray;
+      position: relative;
+      transition: $tr;
+      @media (max-width: 414px) {
+        display: none;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-text {
+      padding-top: 10px;
+      padding-left: 10px;
+      width: 100%;
+      h3 {
+        font-size: 24px;
+        @media (max-width: 820px) {
+          font-size: 20px;
+        }
+      }
+      p {
+        padding-top: 10px;
+        max-width: 90%;
+        color: $gray;
+        @media (max-width: 490px) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+</style>

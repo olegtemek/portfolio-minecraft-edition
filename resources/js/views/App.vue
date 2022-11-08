@@ -3,7 +3,8 @@
     <button class="sound btn" @click="play">
       <img :src="played ? sound_on : sound_off" alt="" />
     </button>
-    <router-view :key="$route.path" />
+    <router-view :key="$route.path" @loading="loading" />
+    <!-- <MyLoading v-if="loaded == false" /> -->
   </div>
 </template>
 
@@ -37,13 +38,21 @@ const play = () => {
     });
   }
 };
+
+const loaded = ref(false);
+
+const loading = () => {
+  setTimeout(() => {
+    loaded.value = true;
+  }, 1000);
+};
 </script>
 
 <style lang="scss" scoped>
 .sound {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 40px;
+  top: 40px;
   width: 40px;
   height: 40px;
   padding: 20px;
@@ -53,14 +62,17 @@ const play = () => {
   z-index: 2;
   background-color: $gray;
   color: $white;
-  margin-bottom: 34px;
   text-shadow: 2px 2px 0 rgba($black, 0.8);
   font-size: 16px;
   border: 2px solid $black;
   box-shadow: inset 3px 3px 0 rgba($white, 0.5),
     inset -3px -3px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  text-align: center;
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
 
   &:hover {
     background-color: $blue;

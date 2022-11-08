@@ -4,9 +4,7 @@
       <div class="projects__title">
         <h1>Select project</h1>
       </div>
-      <div class="projects__list">
-        <router-link to="/projects" class="project__item"> hi </router-link>
-      </div>
+      <ProjectsListComponent />
       <div class="projects__buttons">
         <MyButton
           :title="'Back'"
@@ -24,12 +22,17 @@
 </template>
 
 
+<script setup>
+import ProjectsListComponent from "@/views/components/ProjectsListComponent.vue";
+</script>
+
+
 
 
 <style lang="scss" scoped>
 .projects {
   min-height: 100vh;
-  background-image: url("@assets/projects-bg.jpg");
+  background-image: url("@assets/projects-stack-bg.jpg");
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,13 +42,9 @@
     font-size: 42px;
     text-align: center;
     padding-top: 120px;
-  }
-
-  &__list {
-    margin-top: 110px;
-    width: 100%;
-    height: 480px;
-    border: 1px solid $white;
+    @media (max-width: 600px) {
+      font-size: 28px;
+    }
   }
 
   &__buttons {
@@ -55,6 +54,10 @@
     width: 100%;
     > a {
       width: 45%;
+      @media (max-width: 820px) {
+        padding: 14px 10px 4px 10px;
+        box-sizing: border-box;
+      }
     }
   }
 }

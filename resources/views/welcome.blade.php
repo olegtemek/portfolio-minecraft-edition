@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite(['resources/js/app.js', 'resources/scss/app.scss'])
     <title>{{env('APP_NAME')}}</title>
+    <script src="http://localhost:8098"></script>
 </head>
 <body>
     <div id="app"></div>

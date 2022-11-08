@@ -4,7 +4,7 @@
       <div class="stack__title">
         <h1>My Stack</h1>
       </div>
-      <StackListComponent />
+      <StackListComponent @loading="loading" />
       <div class="stack__buttons">
         <MyButton
           :title="'Back'"
@@ -24,6 +24,10 @@
 
 <script setup>
 import StackListComponent from "@/views/components/StackListComponent.vue";
+const emits = defineEmits(["loading"]);
+const loading = () => {
+  emits("loading");
+};
 </script>
 
 

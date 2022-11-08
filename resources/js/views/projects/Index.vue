@@ -4,7 +4,7 @@
       <div class="projects__title">
         <h1>Select project</h1>
       </div>
-      <ProjectsListComponent />
+      <ProjectsListComponent @loading="loading" />
       <div class="projects__buttons">
         <MyButton
           :title="'Back'"
@@ -24,6 +24,10 @@
 
 <script setup>
 import ProjectsListComponent from "@/views/components/ProjectsListComponent.vue";
+const emits = defineEmits(["loading"]);
+const loading = () => {
+  emits("loading");
+};
 </script>
 
 

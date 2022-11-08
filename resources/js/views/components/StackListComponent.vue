@@ -14,9 +14,11 @@ import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
+const emits = defineEmits(["loading"]);
 
 onMounted(() => {
   store.dispatch("fetchStacks");
+  emits("loading");
 });
 const stacks = computed(() => {
   return store.getters.getStacks;

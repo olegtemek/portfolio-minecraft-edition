@@ -4,7 +4,7 @@
       <img :src="played ? sound_on : sound_off" alt="" />
     </button>
     <router-view :key="$route.path" @loading="loading" />
-    <!-- <MyLoading v-if="loaded == false" /> -->
+    <MyLoading v-if="loaded" />
   </div>
 </template>
 
@@ -39,12 +39,10 @@ const play = () => {
   }
 };
 
-const loaded = ref(false);
+const loaded = ref(true);
 
 const loading = () => {
-  setTimeout(() => {
-    loaded.value = true;
-  }, 1000);
+  loaded.value = false;
 };
 </script>
 

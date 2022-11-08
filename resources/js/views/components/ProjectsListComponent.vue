@@ -25,9 +25,11 @@ import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
+const emits = defineEmits(["loading"]);
 
 onMounted(() => {
   store.dispatch("fetchProjects");
+  emits("loading");
 });
 
 const projects = computed(() => {

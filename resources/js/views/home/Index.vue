@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="video">
-      <video autoplay muted loop @loadeddata="$emit('loading')">
+      <video autoplay muted loop @loadeddata="loadedVideo">
         <source src="@assets/main.mp4" />
       </video>
     </div>
@@ -18,6 +18,15 @@
 <script setup>
 import TheHeader from "@/views/components/TheHeader.vue";
 import TheMenu from "@/views/components/TheMenu.vue";
+import { ref } from "@vue/reactivity";
+const loaded = ref(false);
+const emits = defineEmits(["loading"]);
+const loadedVideo = () => {
+  setTimeout(() => {
+    emits("loading");
+    loaded.value = true;
+  }, 500);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +44,7 @@ import TheMenu from "@/views/components/TheMenu.vue";
     height: 100%;
     width: 100%;
     overflow: hidden;
+
     &::after {
       position: absolute;
       content: "";
@@ -45,7 +55,8 @@ import TheMenu from "@/views/components/TheMenu.vue";
       background-color: $black;
       opacity: 0.4;
     }
-    > video {
+    > video,
+    img {
       position: absolute;
       z-index: -1;
       width: 100%;

@@ -28,8 +28,8 @@
     span {
       font-size: 24px;
       position: absolute;
-      right: -70px;
-      top: 70%;
+      right: -100px;
+      top: 80%;
       transform: translateY(-70%) rotate(-35deg);
       color: $yellow;
       text-shadow: 0px 3px 0px rgba(150, 153, 16, 0.4);
@@ -38,12 +38,11 @@
       @media (max-width: 820px) {
         font-size: 16px;
         top: 80%;
+        right: -60px;
       }
       @media (max-width: 570px) {
-        right: -20px;
-      }
-      @media (max-width: 414px) {
         font-size: 12px;
+        right: -20px;
       }
 
       @keyframes anim {

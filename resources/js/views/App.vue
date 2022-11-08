@@ -16,6 +16,8 @@ import sound_off from "@assets/sound-off.svg";
 import sound_bg from "@assets/bg_sound.mp3";
 import { ref } from "@vue/reactivity";
 import { useStore } from "vuex";
+import { watch } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
 const store = useStore();
 
 const played = ref(false);
@@ -40,7 +42,13 @@ const play = () => {
 };
 
 const loaded = ref(true);
-
+const route = useRoute();
+watch(
+  () => route.path,
+  () => {
+    loaded.value = true;
+  }
+);
 const loading = () => {
   loaded.value = false;
 };

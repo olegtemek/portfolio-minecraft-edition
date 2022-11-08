@@ -1,7 +1,16 @@
 <template>
   <div class="home">
     <div class="video">
-      <video autoplay muted loop @loadeddata="loadedVideo">
+      <video
+        autoplay
+        muted
+        loop
+        @loadeddata="loadedVideo"
+        playsinline=""
+        webkit-playinginline=""
+        preload="auto"
+        no-controls=""
+      >
         <source src="@assets/main.mp4" />
       </video>
     </div>
@@ -25,7 +34,7 @@ const loadedVideo = () => {
   setTimeout(() => {
     emits("loading");
     loaded.value = true;
-  }, 500);
+  }, 300);
 };
 </script>
 
@@ -57,6 +66,7 @@ const loadedVideo = () => {
     }
     > video,
     img {
+      pointer-events: none;
       position: absolute;
       z-index: -1;
       width: 100%;

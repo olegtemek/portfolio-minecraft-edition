@@ -74,6 +74,11 @@ const loading = () => {
     object-fit: cover;
   }
 
+  @media (max-width: 560px) {
+    top: 20px;
+    right: 20px;
+  }
+
   &:hover {
     background-color: $blue;
   }

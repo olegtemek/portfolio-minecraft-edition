@@ -1,8 +1,7 @@
 <template>
   <header class="header">
     <div class="header__wrapper">
-      <h1><img src="@assets/main_logo.svg" alt="OLEGTEMEK" /></h1>
-      <p>My portfolio</p>
+      <h1><img src="@assets/main-logo.svg" alt="OLEGTEMEK" /></h1>
       <span>Hello world!</span>
     </div>
   </header>
@@ -26,9 +25,6 @@
         }
       }
     }
-    p {
-      text-align: center;
-    }
     span {
       font-size: 24px;
       position: absolute;
@@ -40,7 +36,8 @@
       animation: anim $tr alternate-reverse infinite;
 
       @media (max-width: 820px) {
-        font-size: 20px;
+        font-size: 16px;
+        top: 80%;
       }
       @media (max-width: 570px) {
         right: -20px;

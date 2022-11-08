@@ -2,6 +2,9 @@
 @import '@style/_fonts.scss';
 
 
+html {
+  overflow: hidden;
+}
 
 body {
   font-family: 'Minecraftia';

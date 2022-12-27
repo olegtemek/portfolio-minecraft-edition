@@ -2,7 +2,7 @@
 
 ## Demo
 
-[▶️ Live demo](https://portfolio.olegtemek.kz)
+[▶️ Live demo](https://olegtemek.kz)
 
 
 ## Tech Stack and Tools:
